@@ -11,8 +11,9 @@ import (
 	"github.com/markbates/goth/providers/bitbucket"
 	"github.com/markbates/goth/providers/github"
 	"github.com/markbates/goth/providers/gitlab"
+	"github.com/markbates/goth/providers/google"
 
-	"./dotenv"
+	"github.com/Auntjoestar/netlify-cms-oauth-provider-go/dotenv"
 )
 
 var (
@@ -136,6 +137,11 @@ func init() {
 			fmt.Sprintf("https://%s/callback//bitbucket", host),
 		),
 		gitlabProvider,
+
+		google.New(
+			os.Getenv("GOOGLE_KEY"), os.Getenv("GOOGLE_SECRET"),
+			fmt.Sprintf("https://%s/callback//google", host),
+		),
 	)
 }
 
