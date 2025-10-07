@@ -140,7 +140,7 @@ func init() {
 
 		google.New(
 			os.Getenv("GOOGLE_KEY"), os.Getenv("GOOGLE_SECRET"),
-			fmt.Sprintf("https://%s/callback//google", host),
+			fmt.Sprintf("https://%s/callback/google", host),
 		),
 	)
 }
