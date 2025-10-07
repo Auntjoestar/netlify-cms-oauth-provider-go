@@ -153,9 +153,18 @@ func main() {
 	router.Get("/refresh", handleRefresh)
 	router.Get("/success", handleSuccess)
 	router.Get("/", handleMain)
-	//
+
 	http.Handle("/", router)
-	//
+
+	listenPort := os.Getenv("PORT")
+	if listenPort == "" {
+		listenPort = "3000"
+	}
+
+	listenAddr := fmt.Sprintf(":%s", listenPort) // Listen on all interfaces (:)
+
 	fmt.Printf("Started running on %s\n", host)
-	fmt.Println(http.ListenAndServe(host, nil))
+	fmt.Printf("Server listening on port %s\n", listenPort)
+
+	fmt.Println(http.ListenAndServe(listenAddr, nil))
 }
